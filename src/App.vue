@@ -1,17 +1,24 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div id="dynamic-component-demo" class="demo">
+    <h1>Weather</h1>
+    <weather :weathers='weathers' @hire='hire'/>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
+import Weather from "@/components/Weather"
 export default {
   name: 'App',
+  data() {
+    return {
+      model: {}
+    }
+  },
+  computed: {
+    weathers() { return this.model.CityWeatherData("Copenhagen") }
+  },
   components: {
-    HelloWorld
+    Weather
   }
 }
 </script>
